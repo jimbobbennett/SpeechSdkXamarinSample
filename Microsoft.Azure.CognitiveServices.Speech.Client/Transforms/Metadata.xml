@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <remove-node path="/api/package[@name='com.microsoft.cognitiveservices.speech.internal']/class[@name='StdMapWStringWString']/method[@name='iterator' and count(parameter)=0]"/>
+  <remove-node path="/api/package[@name='com.microsoft.cognitiveservices.speech.internal']/class[@name='StdMapWStringWStringMapIterator']/method[@name='next' and count(parameter)=0]"/>
+
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech']" name="managedName">Microsoft.Azure.CognitiveServices.Speech</attr>
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech.internal']" name="managedName">Microsoft.Azure.CognitiveServices.Speech.Internal</attr>
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech.util']" name="managedName">Microsoft.Azure.CognitiveServices.Speech.Util</attr>
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech.intent']" name="managedName">Microsoft.Azure.CognitiveServices.Speech.Intent</attr>
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech.translation']" name="managedName">Microsoft.Azure.CognitiveServices.Speech.Translation</attr>
+
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech']/class[@name='SpeechRecognizer']/field[@name='FinalResultReceived']" name="visibility">internal</attr>
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech']/class[@name='SpeechRecognizer']/field[@name='IntermediateResultReceived']" name="visibility">internal</attr>
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech']/class[@name='SpeechRecognizer']/field[@name='RecognitionErrorRaised']" name="visibility">internal</attr>
+
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech.intent']/class[@name='IntentRecognizer']/field[@name='FinalResultReceived']" name="visibility">internal</attr>
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech.intent']/class[@name='IntentRecognizer']/field[@name='IntermediateResultReceived']" name="visibility">internal</attr>
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech.intent']/class[@name='IntentRecognizer']/field[@name='RecognitionErrorRaised']" name="visibility">internal</attr>
+
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech.translation']/class[@name='TranslationRecognizer']/field[@name='FinalResultReceived']" name="visibility">internal</attr>
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech.translation']/class[@name='TranslationRecognizer']/field[@name='IntermediateResultReceived']" name="visibility">internal</attr>
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech.translation']/class[@name='TranslationRecognizer']/field[@name='RecognitionErrorRaised']" name="visibility">internal</attr>
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech.translation']/class[@name='TranslationRecognizer']/field[@name='SynthesisResultReceived']" name="visibility">internal</attr>
+
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech']/class[@name='Recognizer']/field[@name='RecognitionEvent']" name="visibility">internal</attr>
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech']/class[@name='Recognizer']/field[@name='SessionEvent']" name="visibility">internal</attr>
+
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech.util']/class[@name='EventHandlerImpl']" name="visibility">internal</attr>
+  <attr path="/api/package[@name='com.microsoft.cognitiveservices.speech.util']/class[@name='IEventHandler']" name="visibility">internal</attr>
+
+</metadata>
+
+
