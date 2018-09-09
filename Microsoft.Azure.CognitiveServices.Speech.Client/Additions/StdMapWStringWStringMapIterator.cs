@@ -4,11 +4,8 @@ using Android.Runtime;
 
 namespace Microsoft.Azure.CognitiveServices.Speech.Internal
 {
-
-    // Metadata.xml XPath class reference: path="/api/package[@name='com.microsoft.cognitiveservices.speech.internal']/class[@name='StdMapWStringWStringMapIterator']"
     public partial class StdMapWStringWStringMapIterator
     {
-
         static Delegate cb_next;
 #pragma warning disable 0169
         static Delegate GetNextHandler()
@@ -25,8 +22,7 @@ namespace Microsoft.Azure.CognitiveServices.Speech.Internal
         }
 #pragma warning restore 0169
 
-        // Metadata.xml XPath method reference: path="/api/package[@name='com.microsoft.cognitiveservices.speech.internal']/class[@name='StdMapWStringWStringMapIterator']/method[@name='next' and count(parameter)=0]"
-        [Register("next", "()Ljava/lang/Object;", "GetNextHandler")]
+        [Register("next", "()Ljava/lang/String;", "GetNextHandler")]
         public virtual unsafe Java.Lang.Object Next()
         {
             const string __id = "next.()Ljava/lang/String;";

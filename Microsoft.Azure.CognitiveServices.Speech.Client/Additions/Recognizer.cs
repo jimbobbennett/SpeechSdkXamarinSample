@@ -4,19 +4,19 @@ namespace Microsoft.Azure.CognitiveServices.Speech
 {
     public partial class Recognizer
     {
-        EventMapper<RecognitionEventType, RecognitionEventArgs> recognitionHandler;
-        EventMapper<SessionEventType, SessionEventArgs> sessionHandler;
+        EventMapper<RecognitionEventType, RecognitionEventArgs> recognitionMapper;
+        EventMapper<SessionEventType, SessionEventArgs> sessionMapper;
 
         public event EventHandler<EventArgs<RecognitionEventType>> Recognition
         {
-            add => EventMapper.AddEventHandler(ref recognitionHandler, RecognitionEvent, e => e.EventType, value);
-            remove => EventMapper.RemoveEventHandler(ref recognitionHandler, value);
+            add => EventMapper.AddEventHandler(ref recognitionMapper, this, RecognitionEvent, e => e.EventType, value);
+            remove => EventMapper.RemoveEventHandler(ref recognitionMapper, value);
         }
 
         public event EventHandler<EventArgs<SessionEventType>> Session
         {
-            add => EventMapper.AddEventHandler(ref sessionHandler, SessionEvent, e => e.EventType, value);
-            remove => EventMapper.RemoveEventHandler(ref sessionHandler, value);
+            add => EventMapper.AddEventHandler(ref sessionMapper, this, SessionEvent, e => e.EventType, value);
+            remove => EventMapper.RemoveEventHandler(ref sessionMapper, value);
         }
     }
 }
