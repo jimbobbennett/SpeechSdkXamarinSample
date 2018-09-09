@@ -8,6 +8,7 @@ namespace Microsoft.Azure.CognitiveServices.Speech.Internal
     // Metadata.xml XPath class reference: path="/api/package[@name='com.microsoft.cognitiveservices.speech.internal']/class[@name='StdMapWStringWStringMapIterator']"
     public partial class StdMapWStringWStringMapIterator
     {
+
         static Delegate cb_next;
 #pragma warning disable 0169
         static Delegate GetNextHandler()
@@ -19,25 +20,20 @@ namespace Microsoft.Azure.CognitiveServices.Speech.Internal
 
         static IntPtr n_Next(IntPtr jnienv, IntPtr native__this)
         {
-            StdMapWStringWStringMapIterator __this = global::Java.Lang.Object.GetObject<StdMapWStringWStringMapIterator>(jnienv, native__this, JniHandleOwnership.DoNotTransfer);
-            return JNIEnv.NewString(__this.Next()?.ToString());
+            var __this = global::Java.Lang.Object.GetObject<StdMapWStringWStringMapIterator>(jnienv, native__this, JniHandleOwnership.DoNotTransfer);
+            return JNIEnv.NewString(__this.Next().ToString());
         }
 #pragma warning restore 0169
 
-        static IntPtr id_next;
         // Metadata.xml XPath method reference: path="/api/package[@name='com.microsoft.cognitiveservices.speech.internal']/class[@name='StdMapWStringWStringMapIterator']/method[@name='next' and count(parameter)=0]"
         [Register("next", "()Ljava/lang/Object;", "GetNextHandler")]
         public virtual unsafe Java.Lang.Object Next()
         {
-            if (id_next == IntPtr.Zero)
-                id_next = JNIEnv.GetMethodID(class_ref, "next", "()Ljava/lang/Object;");
+            const string __id = "next.()Ljava/lang/String;";
             try
             {
-
-                if (((object)this).GetType() == ThresholdType)
-                    return JNIEnv.GetString(JNIEnv.CallObjectMethod(((global::Java.Lang.Object)this).Handle, id_next), JniHandleOwnership.TransferLocalRef);
-                else
-                    return JNIEnv.GetString(JNIEnv.CallNonvirtualObjectMethod(((global::Java.Lang.Object)this).Handle, ThresholdClass, JNIEnv.GetMethodID(ThresholdClass, "next", "()Ljava/lang/String;")), JniHandleOwnership.TransferLocalRef);
+                var __rm = _members.InstanceMethods.InvokeVirtualObjectMethod(__id, this, null);
+                return JNIEnv.GetString(__rm.Handle, JniHandleOwnership.TransferLocalRef);
             }
             finally
             {
