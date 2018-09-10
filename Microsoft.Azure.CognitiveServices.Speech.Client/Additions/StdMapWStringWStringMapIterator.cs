@@ -17,8 +17,8 @@ namespace Microsoft.Azure.CognitiveServices.Speech.Internal
 
         static IntPtr n_Next(IntPtr jnienv, IntPtr native__this)
         {
-            var __this = global::Java.Lang.Object.GetObject<StdMapWStringWStringMapIterator>(jnienv, native__this, JniHandleOwnership.DoNotTransfer);
-            return JNIEnv.NewString(__this.Next().ToString());
+            var __this = GetObject<StdMapWStringWStringMapIterator>(jnienv, native__this, JniHandleOwnership.DoNotTransfer);
+            return JNIEnv.NewString(__this.Next()?.ToString());
         }
 #pragma warning restore 0169
 
