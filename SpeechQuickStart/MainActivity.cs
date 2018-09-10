@@ -1,19 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Android;
 using Android.App;
 using Android.Content.PM;
+using Android.Media;
 using Android.OS;
+using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Support.V7.App;
 using Android.Util;
 using Android.Widget;
-using Microsoft.Azure.CognitiveServices.Speech;
-using Android.Runtime;
-using System.Collections.Generic;
-using Android.Media;
 using Java.IO;
+using Microsoft.Azure.CognitiveServices.Speech;
 using Microsoft.Azure.CognitiveServices.Speech.Translation;
-using System.Linq;
 
 namespace SpeechQuickStart
 {
@@ -49,41 +49,22 @@ namespace SpeechQuickStart
         TranslationRecognizer translationReco;
         SpeechFactory factory;
 
-        private void ListenForSpeech()
+        void ListenForSpeech()
         {
             try
             {
                 translationReco = factory.CreateTranslationRecognizer("en-US", new List<string> { "de" }, "de-DE-Hedda");
-                //var reco = factory.CreateSpeechRecognizer();
-
-                //reco.IntermediateResult += (s, e) =>
-                //{
-                //    Log.Info("SpeechSDKDemo", "Intermediate result " + e.Value.Text);
-                //    if (!string.IsNullOrWhiteSpace(e.Value.Text))
-                //    {
-                //        RunOnUiThread(() => IntermediateOutput.Text = e.Value.Text);
-                //    }
-                //};
-
-                //reco.FinalResult += (s, e) =>
-                //{
-                //    Log.Info("SpeechSDKDemo", "Final result " + e.Value.Text);
-                //    if (!string.IsNullOrWhiteSpace(e.Value.Text))
-                //    {
-                //        RunOnUiThread(() => FullOutput.Text += $"{ e.Value.Text} ");
-                //    }
-                //};
 
                 translationReco.SynthesisResult += (s, e) =>
                 {
-                    Log.Info("SpeechSDKDemo", "Synthesis Result" + e.Value.SynthesisStatus.ToString());
+                    Log.Info("SpeechSDKDemo", $"Synthesis Result {e.Value.SynthesisStatus}");
                     if (e.Value.SynthesisStatus == SynthesisStatus.Success)
                         PlayWay(e.Value.GetAudio());
                 };
 
                 translationReco.FinalResult += (s, e) =>
                 {
-                    Log.Info("SpeechSDKDemo", "Final result " + e.Value.Text);
+                    Log.Info("SpeechSDKDemo", $"Final result {e.Value.Text}");
                     if (!string.IsNullOrWhiteSpace(e.Value.Text))
                     {
                         RunOnUiThread(() => FullOutput.Text += $"{ e.Value.Translations["de"]} ");
@@ -92,7 +73,7 @@ namespace SpeechQuickStart
 
                 translationReco.IntermediateResult += (s, e) =>
                 {
-                    Log.Info("SpeechSDKDemo", "Translation intermediate result " + e.Value.Text);
+                    Log.Info("SpeechSDKDemo", $"Translation intermediate result {e.Value.Text}");
                     if (!string.IsNullOrWhiteSpace(e.Value.Text))
                     {
                         RunOnUiThread(() => IntermediateOutput.Text = $"{e.Value.Text} - { e.Value.Translations["de"]} ");
@@ -101,21 +82,20 @@ namespace SpeechQuickStart
 
                 translationReco.RecognitionError += (s, e) =>
                 {
-                    Log.Info("SpeechSDKDemo", "Error result " + e.Value?.Name());
+                    Log.Info("SpeechSDKDemo", $"Error result {e.Value?.Name()}");
                 };
 
                 translationReco.StartContinuousRecognitionAsync();
-                //reco.StartContinuousRecognitionAsync();
             }
             catch (Exception ex)
             {
-                Log.Error("SpeechSDKDemo", "unexpected " + ex.Message);
+                Log.Error("SpeechSDKDemo", $"unexpected {ex.Message}");
             }
         }
 
-        private MediaPlayer mediaPlayer = new MediaPlayer();
+        readonly MediaPlayer mediaPlayer = new MediaPlayer();
 
-        private void PlayWay(byte[] audio)
+        void PlayWay(byte[] audio)
         {
             if (!audio.Any()) return;
 
